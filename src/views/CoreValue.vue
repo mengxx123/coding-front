@@ -10,8 +10,7 @@
             <ui-raised-button class="btn" primary label="编码" @click="encode" />
             <ui-raised-button class="btn" secondary label="解码" @click="decode" />
         </div>
-        <textarea class="form-control" v-model="result" rows="6" placeholder="结果" disabled></textarea>
-        <div class="refer">参考 <a href="https://github.com/sym233/core-values-encoder" target="_blank">Github</a></div>
+        <result :text="result" :copyable="true" />
     </my-page>
 </template>
 
@@ -165,7 +164,7 @@
                         {
                             type: 'icon',
                             icon: 'help',
-                            to: '/help'
+                            to: '/core_values/help'
                         }
                     ]
                 }

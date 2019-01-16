@@ -1,9 +1,9 @@
 <template>
-    <my-page title="二进制编码解码" :page="page">
+    <my-page title="Quoted-Printable" :page="page">
         <textarea class="form-control" v-model="code" rows="6" placeholder="要编码/解码的内容"></textarea>
         <div class="btns">
-            <ui-raised-button class="btn" primary label="文本转二进制" @click="encode" />
-            <ui-raised-button class="btn" secondary label="二进制转文本" @click="decode" />
+            <ui-raised-button class="btn" primary label="编码" @click="encode" />
+            <ui-raised-button class="btn" secondary label="解码" @click="decode" />
         </div>
         <result :text="result" :copyable="true" />
         <!-- <textarea class="form-control" v-model="result" rows="6" placeholder="结果" v-if="result" disabled></textarea> -->
@@ -11,6 +11,9 @@
 </template>
 
 <script>
+    const quotedPrintable = require('quoted-printable')
+    const utf8 = require('utf8')
+
     export default {
         data () {
             return {
@@ -22,7 +25,7 @@
                         {
                             type: 'icon',
                             icon: 'help',
-                            to: '/help'
+                            to: '/quoted_printable/help'
                         }
                     ]
                 }
@@ -40,19 +43,13 @@
             },
             encode() {
                 if (!this.code) {
-                    alert('请填写要编码/解码的内容')
+                    this.$message({
+                        type: 'danger',
+                        text: '请填写要编码/解码的内容'
+                    })
                     return
                 }
-                this.result = ''
-                for (let i = 0; i < this.code.length; i++) {
-                    var bin = this.code.charCodeAt(i).toString(2)
-                    var nBinLen = bin.length
-                    if (nBinLen < 8) {
-                        bin = '000000000' + bin
-                        bin = bin.substr(bin.length - 8, 8)
-                    }
-                    this.result += bin
-                }
+                this.result = quotedPrintable.encode(utf8.encode(this.code))
             },
             decode() {
                 if (!this.code) {
@@ -62,19 +59,12 @@
                     })
                     return
                 }
-                if (this.code.length % 8 !== 0) {
-                    this.$message({
-                        type: 'danger',
-                        text: '二进制位数必须是 8 的倍数'
-                    })
-                    return
-                }
-                this.result = ''
-                for (let i = 0; i < this.code.length; i += 8) {
-                    var str = this.code.substr(i, 8) // 16 进制
-                    var n = parseInt(str, 2) // 10 进制
-                    this.result += String.fromCharCode(n)
-                }
+                this.result = utf8.decode(quotedPrintable.decode(this.code))
+            }
+        },
+        watch: {
+            code() {
+                this.result = null
             }
         }
     }

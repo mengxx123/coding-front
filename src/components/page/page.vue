@@ -8,7 +8,10 @@
                 <ui-list-item title="首页" to="/">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
-                <ui-list-item title="关于" to="/about">
+                <ui-list-item title="加密解密" href="https://crypto.yunser.com/" target="_blank">
+                    <ui-icon slot="left" value="grade"/>
+                </ui-list-item>
+                <ui-list-item title="关于" href="https://project.yunser.com/products/0cdfec505c5411e888a50737631f72f2" target="_blank">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
             </ui-list>

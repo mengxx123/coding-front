@@ -24,7 +24,8 @@
             <ui-raised-button class="btn" primary label="转换" @click="convert" />
             <!--<ui-raised-button class="btn" secondary label="UTF-8 还原 中文" @click="decode" />-->
         </div>
-        <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果"></textarea>
+        <result :text="result" :copyable="true" />
+        <!-- <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果"></textarea> -->
     </my-page>
 </template>
 
@@ -34,7 +35,7 @@
     export default {
         data () {
             return {
-                code: '请将您要转换的汉字内容粘贴在这里。',
+                code: 'ÎÒ',
                 to: '',
                 from: '',
                 options: [
@@ -139,11 +140,11 @@
                 result: '',
                 page: {
                     menu: [
-                        {
-                            type: 'icon',
-                            icon: 'help',
-                            to: '/help'
-                        }
+                        // {
+                        //     type: 'icon',
+                        //     icon: 'help',
+                        //     to: '/help'
+                        // }
                     ]
                 }
             }

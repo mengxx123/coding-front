@@ -4,8 +4,7 @@
         <div class="btns">
             <ui-raised-button class="btn" primary label="识别" @click="recognize" />
         </div>
-        <result :text="result" :copyable="false" />
-        <!-- <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果" v-if="result"></textarea> -->
+        <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果" v-if="result"></textarea>
     </my-page>
 </template>
 
@@ -48,33 +47,25 @@
                     })
                     return
                 }
-                console.log(this.code.match(/^(\\%[0-9A-F]{2})+$/))
+                console.log(this.code.match(/^(\\%[0-9A-F]{2})+/))
                 if (this.code.match(/^(\\u[0-9a-f]{4})+$/)) {
                     this.result = '这是 Unicode 编码'
-                } else if (this.code.match(/^(%u[0-9a-f]{4})+$/)) {
-                    this.result = '这是 Escape 编码'
-                } else if (this.code.match(/^(%[0-9A-F]{2})+$/)) {
+                } else if (this.code.match(/^(%[0-9A-F]{2})+/)) {
                     this.result = '这是 URL 编码'
-                } else if (this.code.match(/^(&#[0-9]{3,5};)+$/)) {
+                } else if (this.code.match(/^(&#[0-9]{3,5};)+/)) {
                     this.result = '这是 HTML 码'
-                } else if (this.code.match(/^([富强民主文明和谐自由平等公正法治爱国敬业诚信友善])+$/)) {
+                } else if (this.code.match(/^([富强民主文明和谐自由平等公正法治爱国敬业诚信友善])+/)) {
                     this.result = '这是核心价值观编码'
-                } else if (this.code.match(/^(=[0-9A-F]{2})+$/)) {
+                } else if (this.code.match(/^(=[0-9A-F]{2})+/)) {
                     this.result = '这是可打印字符引用编码 （quoted-printable 编码）'
-                } else if (this.code.match(/^[ -.]+$/)) {
+                } else if (this.code.match(/^[ -.]+/)) {
                     this.result = '这是摩斯码'
-                } else if (this.code.match(/^(0x[0-9a-f]+,)+$/)) {
+                } else if (this.code.match(/^(0x[0-9a-f]+,)+/)) {
                     this.result = '这是十六进制数'
-                } else if (this.code.match(/^(0x[0-9a-f]+\s+)+$/)) {
+                } else if (this.code.match(/^(0x[0-9a-f]+\s+)+/)) {
                     this.result = '这是十六进制数'
-                } else if (this.code.match(/^(\\x[0-9a-f]+\s*)+$/)) {
+                } else if (this.code.match(/^(\\x[0-9a-f]+\s*)+/)) {
                     this.result = '这是 16 进制的 ASCII 码'
-                } else if (this.code.match(/^[0-9a-zA-Z]+=+$/)) {
-                    this.result = '没有识别结果。有可能是一个 BASE 编码（Base64、Base32 等）'
-                } else if (this.code.match(/^[0-9a-fA-F]{32}$/)) {
-                    this.result = '没有识别结果。有可能是一段哈希值（比如 MD5、SHA1 等）。'
-                } else if (this.code.match(/^[0-9a-fA-F]{32}$/)) {
-                    this.result = '没有识别结果。有可能是一段哈希值（比如 SHA256 等）。'
                 } else {
                     this.result = '没有识别结果。欢迎给我们反馈，帮助我们做得更好。'
                 }

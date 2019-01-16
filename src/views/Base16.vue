@@ -1,34 +1,24 @@
 <template>
-    <my-page title="文本转 ASCII（HTML ASCII）" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="文本"></textarea>
-        <!-- <select class="form-control charset" v-model="charset">
-            <option value="gbk">gbk</option>
-            <option value="big5">big5</option>
-            <option value="utf-8" selected="true">utf-8</option>
-        </select> -->
+    <my-page title="Base 16 编码解码" :page="page">
+        <textarea class="form-control" v-model="code" rows="6" placeholder="要编码/解码的文本"></textarea>
         <div class="btns">
-            <ui-raised-button class="btn" primary label="转换" @click="encode" />
-            <!-- <ui-raised-button class="btn" secondary label="解码" @click="decode" /> -->
+            <ui-raised-button class="btn" primary label="编码" @click="encode" />
+            <ui-raised-button class="btn" secondary label="解码" @click="decode" />
         </div>
         <result :text="result" :copyable="true" />
     </my-page>
 </template>
 
 <script>
-    /* eslint-disable */
+    const {encode, decode} = require('guless-converter')
+
     export default {
         data () {
             return {
                 code: '',
-                charset: 'utf-8',
                 result: '',
                 page: {
                     menu: [
-                        // {
-                        //     type: 'icon',
-                        //     icon: 'help',
-                        //     to: '/help'
-                        // }
                     ]
                 }
             }
@@ -38,28 +28,27 @@
         },
         methods: {
             init() {
-            },
-            text2asc2(s) {
-                let as = ''
-                for(let a = 0; a < s.length; a++) {
-                    as += '&#' + s.charCodeAt(a) + ';'
-                }
-                return as
+                // this.code = '1'
+                // this.encode()
+                // this.code = this.result
+                // this.decode()
             },
             encode() {
                 if (!this.code) {
                     alert('请填写要编码/解码的内容')
                     return
                 }
-
-                this.result = this.text2asc2(this.code)
+                this.result = encode(this.code, 'base16')
             },
             decode() {
                 if (!this.code) {
-                    alert('请填写要编码/解码的内容')
+                    this.$message({
+                        type: 'danger',
+                        text: '请填写要编码/解码的内容'
+                    })
                     return
                 }
-                this.result = valuesDecode(this.code)
+                this.result = decode(this.code, 'base16')
             }
         }
     }

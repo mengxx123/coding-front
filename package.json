@@ -11,6 +11,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "base32": "^0.0.6",
+    "guless-converter": "^1.0.1",
+    "morsify": "^0.5.2",
+    "quoted-printable": "^1.0.1",
+    "utf-8": "^2.0.0",
+    "xmorse": "^0.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

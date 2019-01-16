@@ -5,7 +5,7 @@
             <ui-raised-button class="btn" primary label="中文 转换 UTF-8" @click="encode" />
             <ui-raised-button class="btn" secondary label="UTF-8 还原 中文" @click="decode" />
         </div>
-        <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果"></textarea>
+        <result :text="result" :copyable="true" />
     </my-page>
 </template>
 
@@ -13,15 +13,15 @@
     export default {
         data () {
             return {
-                code: '请将您要转换的汉字内容粘贴在这里。',
+                code: '',
                 result: '',
                 page: {
                     menu: [
-                        {
-                            type: 'icon',
-                            icon: 'help',
-                            to: '/help'
-                        }
+                        // {
+                        //     type: 'icon',
+                        //     icon: 'help',
+                        //     to: '/help'
+                        // }
                     ]
                 }
             }

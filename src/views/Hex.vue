@@ -1,21 +1,15 @@
 <template>
-    <my-page title="文本转 ASCII（HTML ASCII）" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="文本"></textarea>
-        <!-- <select class="form-control charset" v-model="charset">
-            <option value="gbk">gbk</option>
-            <option value="big5">big5</option>
-            <option value="utf-8" selected="true">utf-8</option>
-        </select> -->
+    <my-page title="十六进制编码解码" :page="page">
+        <textarea class="form-control" v-model="code" rows="6" placeholder="要编码/解码的内容"></textarea>
         <div class="btns">
-            <ui-raised-button class="btn" primary label="转换" @click="encode" />
-            <!-- <ui-raised-button class="btn" secondary label="解码" @click="decode" /> -->
+            <ui-raised-button class="btn" primary label="文本转十六进制" @click="encode" />
+            <ui-raised-button class="btn" secondary label="十六进制转文本" @click="decode" />
         </div>
         <result :text="result" :copyable="true" />
     </my-page>
 </template>
 
 <script>
-    /* eslint-disable */
     export default {
         data () {
             return {
@@ -24,11 +18,11 @@
                 result: '',
                 page: {
                     menu: [
-                        // {
-                        //     type: 'icon',
-                        //     icon: 'help',
-                        //     to: '/help'
-                        // }
+                        {
+                            type: 'icon',
+                            icon: 'help',
+                            to: '/help'
+                        }
                     ]
                 }
             }
@@ -38,28 +32,36 @@
         },
         methods: {
             init() {
-            },
-            text2asc2(s) {
-                let as = ''
-                for(let a = 0; a < s.length; a++) {
-                    as += '&#' + s.charCodeAt(a) + ';'
-                }
-                return as
+                // this.code = '1'
+                // this.encode()
+                // this.code = this.result
+                // this.decode()
             },
             encode() {
                 if (!this.code) {
                     alert('请填写要编码/解码的内容')
                     return
                 }
-
-                this.result = this.text2asc2(this.code)
+                this.result = ''
+                for (let i = 0; i < this.code.length; i++) {
+                    var bin = this.code.charCodeAt(i).toString(16)
+                    this.result += bin
+                }
             },
             decode() {
                 if (!this.code) {
-                    alert('请填写要编码/解码的内容')
+                    this.$message({
+                        type: 'danger',
+                        text: '请填写要编码/解码的内容'
+                    })
                     return
                 }
-                this.result = valuesDecode(this.code)
+                this.result = ''
+                for (let i = 0; i < this.code.length; i += 2) {
+                    var str = this.code.substr(i, 2) // 16 进制
+                    var n = parseInt(str, 16) // 10 进制
+                    this.result += String.fromCharCode(n)
+                }
             }
         }
     }

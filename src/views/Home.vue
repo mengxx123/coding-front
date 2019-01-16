@@ -1,18 +1,6 @@
 <template>
-    <my-page title="编码解码">
-        <div class="tool-list">
-            <div class="mu-paper list-item mu-paper-round mu-paper-1" 
-                v-for="app in apps">
-                <router-link class="link" :to="app.to" :href="app.href" :target="app.target">
-                    <img :src="app.icon" class="img">
-                    <div class="info">
-                        <h3 class="text">{{ app.name }}</h3>
-                        <div class="desc">{{ app.desc }}</div>
-                    </div>
-                    <i class="icon icon-heart"></i>
-                </router-link>
-            </div>
-        </div>
+    <my-page title="编码解码" :page="page">
+        <app-list :data="groups" />
     </my-page>
 </template>
 
@@ -20,128 +8,244 @@
     export default {
         data () {
             return {
-                apps: [
+                groups: [
                     {
-                        name: '编码识别',
-                        desc: '',
-                        icon: '/static/img/coding.svg',
-                        to: '/recognition'
+                        name: '基础工具',
+                        apps: [
+                            {
+                                name: '编码识别',
+                                desc: '',
+                                icon: '/static/img/coding_help.svg',
+                                to: '/recognition'
+                            },
+                            {
+                                name: '字符串转义',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: 'xxx',
+                                href: 'https://code.yunser.com/escape',
+                                target: '_blank'
+                            },
+                            {
+                                name: '十六进制编辑器',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: 'xxx',
+                                href: 'https://hexeditor.yunser.com/',
+                                target: '_blank'
+                            }
+                        ]
                     },
                     {
-                        name: 'Unicode 编码解码',
-                        desc: '',
-                        icon: '/static/img/coding_unicode.svg',
-                        to: 'xxx',
-                        href: 'https://unicode.yunser.com/coding',
-                        target: '_blank'
+                        name: '常用编码',
+                        apps: [
+                            {
+                                name: 'Unicode 编码解码',
+                                desc: '',
+                                icon: '/static/img/coding_unicode.svg',
+                                to: 'xxx',
+                                href: 'https://unicode.yunser.com/coding',
+                                target: '_blank'
+                            },
+                            {
+                                name: 'URL 编码解码',
+                                desc: '',
+                                icon: '/static/img/url.svg',
+                                to: 'xxx',
+                                href: 'https://url.yunser.com/',
+                                target: '_blank'
+                            },
+                            {
+                                name: '文件转 Base64',
+                                desc: '',
+                                icon: '/static/img/base64.svg',
+                                to: 'xxx',
+                                href: 'https://demo2.yunser.com/coding/base64.html',
+                                target: '_blank'
+                            },
+                            {
+                                name: '图片 ⇆ Base64',
+                                desc: '',
+                                icon: '/static/img/base64.svg',
+                                to: 'xxx',
+                                href: 'https://imagetool.yunser.com/base64',
+                                target: '_blank'
+                            },
+                            {
+                                name: 'Base 64',
+                                desc: '',
+                                icon: '/static/img/base64.svg',
+                                to: '/base64'
+                            },
+                            {
+                                name: 'Base 32',
+                                desc: '',
+                                icon: '/static/img/base64.svg',
+                                to: '/base32'
+                            },
+                            {
+                                name: 'Base 16',
+                                desc: '',
+                                icon: '/static/img/base64.svg',
+                                to: '/base16'
+                            },
+                            // {
+                            //     name: '文件哈希值/MD5',
+                            //     desc: '支持 MD5、SHA1 等散哈希算法',
+                            //     icon: '/static/img/hash.svg',
+                            //     to: 'xxx',
+                            //     href: 'https://encrypt.yunser.com/',
+                            //     target: '_blank'
+                            // },
+                            // {
+                            //     name: '哈希算法',
+                            //     desc: '',
+                            //     icon: '/static/img/hash.svg',
+                            //     to: 'xxx',
+                            //     href: 'https://encrypt.yunser.com/hash/file/',
+                            //     target: '_blank'
+                            // },
+                            {
+                                name: 'ASCII 码对照表',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: 'xxx',
+                                href: 'https://code.yunser.com/asc2',
+                                target: '_blank'
+                            },
+                            {
+                                name: '摩斯码',
+                                desc: '',
+                                icon: '/static/img/morse.svg',
+                                to: '/morse'
+                            },
+                            {
+                                name: 'UTF-8',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: '/utf8'
+                            },
+                            {
+                                name: '编码转换',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: '/charset/convert'
+                            },
+                            {
+                                name: '文本转 ASCII',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: '/text_to_asc2'
+                            },
+                            {
+                                name: 'Unicode',
+                                desc: '',
+                                icon: '/static/img/coding_unicode.svg',
+                                to: 'xxx',
+                                href: 'https://unicode.yunser.com/',
+                                target: '_blank'
+                            }
+                        ]
                     },
                     {
-                        name: 'URL 编码解码',
-                        desc: '',
-                        icon: '/static/img/url.svg',
-                        to: 'xxx',
-                        href: 'https://url.yunser.com/',
-                        target: '_blank'
+                        name: '代码',
+                        apps: [
+                            {
+                                name: 'AAEncode',
+                                desc: '',
+                                icon: '/static/img/coding_code.svg',
+                                to: '/aaencode'
+                            },
+                            {
+                                name: 'JJEncode',
+                                desc: '',
+                                icon: '/static/img/coding_code.svg',
+                                to: '/jjencode'
+                            },
+                            {
+                                name: 'JsFuck',
+                                desc: '',
+                                icon: '/static/img/coding_code.svg',
+                                to: '/jsfuck'
+                            }
+                        ]
                     },
                     {
-                        name: 'Base 64 编码解码',
-                        desc: '',
-                        icon: '/static/img/base64.svg',
-                        to: 'xxx',
-                        href: 'https://base64.yunser.com/',
-                        target: '_blank'
-                    },
-                    {
-                        name: '图片⇆Base64',
-                        desc: '',
-                        icon: '/static/img/base64.svg',
-                        to: 'xxx',
-                        href: 'https://imagetool.yunser.com/base64',
-                        target: '_blank'
-                    },
-                    {
-                        name: '文件哈希值/MD5',
-                        desc: '支持 MD5、SHA1 等散哈希算法',
-                        icon: '/static/img/hash.svg',
-                        to: '//hash/file'
-                    },
-                    {
-                        name: '哈希算法',
-                        desc: '',
-                        icon: '/static/img/hash.svg',
-                        to: '/hash'
-                    },
-                    {
-                        name: 'ASCII 码对照表',
-                        desc: '',
-                        icon: '/static/img/base64.svg',
-                        to: 'xxx',
-                        href: 'https://code.yunser.com/asc2',
-                        target: '_blank'
-                    },
-                    {
-                        name: '字符串转义',
-                        desc: '',
-                        icon: '/static/img/coding.svg',
-                        to: 'xxx',
-                        href: 'https://code.yunser.com/escape',
-                        target: '_blank'
-                    },
-                    {
-                        name: 'HTML 特殊符号',
-                        desc: 'HTML 特殊符号对照表',
-                        icon: '/static/img/html.svg',
-                        to: 'xxx',
-                        href: 'https://code.yunser.com/html/char',
-                        target: '_blank'
-                    },
-                    {
-                        name: '摩斯码编码解码',
-                        desc: '',
-                        icon: '/static/img/morse.svg',
-                        to: 'xxx',
-                        href: 'https://morse.yunser.com/',
-                        target: '_blank'
-                    },
-                    {
-                        name: 'UTF-8 编码解码',
-                        desc: '',
-                        icon: '/static/img/coding.svg',
-                        to: '/utf8'
-                    },
-                    {
-                        name: '编码转换',
-                        desc: '',
-                        icon: '/static/img/coding.svg',
-                        to: '/charset/convert'
-                    },
-                    {
-                        name: '核心价值观编码',
-                        desc: '',
-                        icon: '/static/img/coding.svg',
-                        to: '/core_values'
-                    },
-                    {
-                        name: '文本转 ASCII',
-                        desc: '',
-                        icon: '/static/img/coding.svg',
-                        to: '/text_to_asc2'
-                    },
-                    {
-                        name: '二进制反码补码',
-                        desc: '',
-                        icon: '/static/img/coding.svg',
-                        to: '/binary'
-                    },
-                    {
-                        name: 'Unicode',
-                        desc: '',
-                        icon: '/static/img/coding_unicode.svg',
-                        to: 'xxx',
-                        href: 'https://unicode.yunser.com/',
-                        target: '_blank'
+                        name: '其他编码',
+                        apps: [
+                            {
+                                name: '二进制编码解码',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: '/binary_convert'
+                            },
+                            {
+                                name: '二进制反码补码',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: '/binary'
+                            },
+                            {
+                                name: '十六进制编码解码',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: '/hex'
+                            },
+                            {
+                                name: 'HTML 编码解码',
+                                desc: 'HTML 特殊符号对照表',
+                                icon: '/static/img/html.svg',
+                                to: 'xxx',
+                                href: 'https://html.yunser.com/coding',
+                                target: '_blank'
+                            },
+                            {
+                                name: 'HTML 特殊符号',
+                                desc: 'HTML 特殊符号对照表',
+                                icon: '/static/img/html.svg',
+                                to: 'xxx',
+                                href: 'https://code.yunser.com/html/char',
+                                target: '_blank'
+                            },
+                            {
+                                name: '核心价值观编码',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: '/core_values'
+                            },
+                            {
+                                name: 'Quoted-Printable',
+                                desc: '',
+                                icon: '/static/img/coding.svg',
+                                to: '/quoted_printable'
+                            },
+                            {
+                                name: 'Escape',
+                                desc: 'Escape 编码解码',
+                                icon: '/static/img/coding.svg',
+                                to: '/escape'
+                            }
+                        ]
                     }
-                ]
+                ],
+                page: {
+                    menu: [
+                        {
+                            type: 'icon',
+                            icon: 'search',
+                            href: 'https://search.yunser.com?utm_source=coding',
+                            target: '_blank',
+                            title: '搜索'
+                        },
+                        {
+                            type: 'icon',
+                            icon: 'apps',
+                            href: 'https://app.yunser.com?utm_source=coding',
+                            target: '_blank',
+                            title: '应用'
+                        }
+                    ]
+                }
             }
         },
         computed: {

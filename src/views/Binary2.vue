@@ -1,13 +1,13 @@
 <template>
-    <my-page title="文本转 ASCII（HTML ASCII）" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="文本"></textarea>
+    <my-page title="二进制反码补码" :page="page">
+        <textarea class="form-control" v-model="code" rows="6" placeholder="二进制数"></textarea>
         <!-- <select class="form-control charset" v-model="charset">
             <option value="gbk">gbk</option>
             <option value="big5">big5</option>
             <option value="utf-8" selected="true">utf-8</option>
         </select> -->
         <div class="btns">
-            <ui-raised-button class="btn" primary label="转换" @click="encode" />
+            <ui-raised-button class="btn" primary label="获取反码" @click="convert" />
             <!-- <ui-raised-button class="btn" secondary label="解码" @click="decode" /> -->
         </div>
         <result :text="result" :copyable="true" />
@@ -38,28 +38,25 @@
         },
         methods: {
             init() {
+                // this.convert()
             },
-            text2asc2(s) {
-                let as = ''
-                for(let a = 0; a < s.length; a++) {
-                    as += '&#' + s.charCodeAt(a) + ';'
-                }
-                return as
-            },
-            encode() {
+            convert() {
                 if (!this.code) {
-                    alert('请填写要编码/解码的内容')
+                    alert('请输入二进制数')
                     return
                 }
 
-                this.result = this.text2asc2(this.code)
-            },
-            decode() {
-                if (!this.code) {
-                    alert('请填写要编码/解码的内容')
-                    return
+                var z = this.code
+                var r1 = 0
+                var r2 = 0
+                for (let i = z.length-1; i >= 0; i = i-1) {
+                    r1 += eval(z.charAt(i)) * Math.pow(2, z.length-i-1);
+                    r2 += eval(1) * Math.pow(2, z.length-i-1);
+                    var y1 = parseInt(r1);
+                    var y2 = parseInt(r2);
+                    var res=y2-y1;
+                    this.result = res.toString(2);
                 }
-                this.result = valuesDecode(this.code)
             }
         }
     }
