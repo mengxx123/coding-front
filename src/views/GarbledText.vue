@@ -1,10 +1,12 @@
 <template>
     <my-page title="编码识别" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="编码内容"></textarea>
-        <div class="btns">
-            <ui-raised-button class="btn" primary label="识别" @click="recognize" />
+        <div class="common-container container">
+            <textarea class="form-control" v-model="code" rows="6" placeholder="编码内容"></textarea>
+            <div class="btns">
+                <ui-raised-button class="btn" primary label="识别" @click="recognize" />
+            </div>
+            <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果" v-if="result"></textarea>
         </div>
-        <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果" v-if="result"></textarea>
     </my-page>
 </template>
 

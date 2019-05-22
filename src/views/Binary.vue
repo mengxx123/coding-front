@@ -1,11 +1,13 @@
 <template>
     <my-page title="二进制编码解码" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="要编码/解码的内容"></textarea>
-        <div class="btns">
-            <ui-raised-button class="btn" primary label="文本转二进制" @click="encode" />
-            <ui-raised-button class="btn" secondary label="二进制转文本" @click="decode" />
+        <div class="common-container container">
+            <textarea class="form-control" v-model="code" rows="6" placeholder="要编码/解码的内容"></textarea>
+            <div class="btns">
+                <ui-raised-button class="btn" primary label="文本转二进制" @click="encode" />
+                <ui-raised-button class="btn" secondary label="二进制转文本" @click="decode" />
+            </div>
+            <result :text="result" :copyable="true" />
         </div>
-        <result :text="result" :copyable="true" />
         <!-- <textarea class="form-control" v-model="result" rows="6" placeholder="结果" v-if="result" disabled></textarea> -->
     </my-page>
 </template>

@@ -5,7 +5,6 @@ const Home = resolve => require(['@/views/Home'], resolve)
 const GarbledText = resolve => require(['@/views/GarbledText'], resolve)
 const CoreValue = resolve => require(['@/views/CoreValue'], resolve)
 const CoreValueHelp = resolve => require(['@/views/CoreValueHelp'], resolve)
-const About = resolve => require(['@/views/About'], resolve)
 const TextToAsc2 = resolve => require(['@/views/TextToAsc2'], resolve)
 const Binary = resolve => require(['@/views/Binary'], resolve)
 const Binary2 = resolve => require(['@/views/Binary2'], resolve)
@@ -45,10 +44,6 @@ let routes = [
     {
         path: '/core_values/help',
         component: CoreValueHelp
-    },
-    {
-        path: '/about',
-        component: About
     },
     {
         path: '/text_to_asc2',

@@ -1,11 +1,13 @@
 <template>
     <my-page title="UTF-8 编码解码" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="要转换的内容"></textarea>
-        <div class="btns">
-            <ui-raised-button class="btn" primary label="中文 转换 UTF-8" @click="encode" />
-            <ui-raised-button class="btn" secondary label="UTF-8 还原 中文" @click="decode" />
+        <div class="common-container container">
+            <textarea class="form-control" v-model="code" rows="6" placeholder="要转换的内容"></textarea>
+            <div class="btns">
+                <ui-raised-button class="btn" primary label="中文 转换 UTF-8" @click="encode" />
+                <ui-raised-button class="btn" secondary label="UTF-8 还原 中文" @click="decode" />
+            </div>
+            <result :text="result" :copyable="true" />
         </div>
-        <result :text="result" :copyable="true" />
     </my-page>
 </template>
 

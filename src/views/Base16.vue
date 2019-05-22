@@ -1,11 +1,13 @@
 <template>
     <my-page title="Base 16 编码解码" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="要编码/解码的文本"></textarea>
-        <div class="btns">
-            <ui-raised-button class="btn" primary label="编码" @click="encode" />
-            <ui-raised-button class="btn" secondary label="解码" @click="decode" />
+        <div class="common-container container">
+            <textarea class="form-control" v-model="code" rows="6" placeholder="要编码/解码的文本"></textarea>
+            <div class="btns">
+                <ui-raised-button class="btn" primary label="编码" @click="encode" />
+                <ui-raised-button class="btn" secondary label="解码" @click="decode" />
+            </div>
+            <result :text="result" :copyable="true" />
         </div>
-        <result :text="result" :copyable="true" />
     </my-page>
 </template>
 

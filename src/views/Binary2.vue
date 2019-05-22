@@ -1,16 +1,18 @@
 <template>
     <my-page title="二进制反码补码" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="二进制数"></textarea>
-        <!-- <select class="form-control charset" v-model="charset">
-            <option value="gbk">gbk</option>
-            <option value="big5">big5</option>
-            <option value="utf-8" selected="true">utf-8</option>
-        </select> -->
-        <div class="btns">
-            <ui-raised-button class="btn" primary label="获取反码" @click="convert" />
-            <!-- <ui-raised-button class="btn" secondary label="解码" @click="decode" /> -->
+        <div class="common-container container">
+            <textarea class="form-control" v-model="code" rows="6" placeholder="二进制数"></textarea>
+            <!-- <select class="form-control charset" v-model="charset">
+                <option value="gbk">gbk</option>
+                <option value="big5">big5</option>
+                <option value="utf-8" selected="true">utf-8</option>
+            </select> -->
+            <div class="btns">
+                <ui-raised-button class="btn" primary label="获取反码" @click="convert" />
+                <!-- <ui-raised-button class="btn" secondary label="解码" @click="decode" /> -->
+            </div>
+            <result :text="result" :copyable="true" />
         </div>
-        <result :text="result" :copyable="true" />
     </my-page>
 </template>
 

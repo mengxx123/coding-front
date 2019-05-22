@@ -1,31 +1,33 @@
 <template>
     <my-page title="编码转换" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="要转换的内容"></textarea>
-        <div class="option">
-            <ui-select-field class="select" v-model="from" :maxHeight="300">
-                <ui-menu-item :value="option.value"
-                    :title="option.text"
-                    v-for="option in options" :key="option.value"/>
-            </ui-select-field>
-            <!-- <select v-model="from">
-                <option :value="option.value" v-for="option in options">{{ option.text }}</option>
-            </select> -->
-            <div class="convert">转</div>
-            <ui-select-field class="select" v-model="to" :maxHeight="300">
-                <ui-menu-item :value="option.value"
-                    :title="option.text"
-                    v-for="option in options2" :key="option.value"/>
-            </ui-select-field>
+        <div class="common-container container">
+            <textarea class="form-control" v-model="code" rows="6" placeholder="要转换的内容"></textarea>
+            <div class="option">
+                <ui-select-field class="select" v-model="from" :maxHeight="300">
+                    <ui-menu-item :value="option.value"
+                        :title="option.text"
+                        v-for="option in options" :key="option.value"/>
+                </ui-select-field>
+                <!-- <select v-model="from">
+                    <option :value="option.value" v-for="option in options">{{ option.text }}</option>
+                </select> -->
+                <div class="convert">转</div>
+                <ui-select-field class="select" v-model="to" :maxHeight="300">
+                    <ui-menu-item :value="option.value"
+                        :title="option.text"
+                        v-for="option in options2" :key="option.value"/>
+                </ui-select-field>
+            </div>
+            <ui-select label="Normal" v-model="from" full-width>
+                <ui-option v-for="option,index in options" :key="option" :label="option" :value="option"></ui-option>
+            </ui-select>
+            <div class="btns">
+                <ui-raised-button class="btn" primary label="转换" @click="convert" />
+                <!--<ui-raised-button class="btn" secondary label="UTF-8 还原 中文" @click="decode" />-->
+            </div>
+            <result :text="result" :copyable="true" />
+            <!-- <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果"></textarea> -->
         </div>
-        <ui-select label="Normal" v-model="from" full-width>
-            <ui-option v-for="option,index in options" :key="option" :label="option" :value="option"></ui-option>
-        </ui-select>
-        <div class="btns">
-            <ui-raised-button class="btn" primary label="转换" @click="convert" />
-            <!--<ui-raised-button class="btn" secondary label="UTF-8 还原 中文" @click="decode" />-->
-        </div>
-        <result :text="result" :copyable="true" />
-        <!-- <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果"></textarea> -->
     </my-page>
 </template>
 

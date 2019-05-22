@@ -1,20 +1,22 @@
 <template>
     <my-page title="摩斯码" :page="page">
-        <ui-text-field  v-model="text" hintText="请输入文字或摩斯码" multiLine :rows="4" :rowsMax="4" />
-        <br>
-        <ui-text-field class="option-input" v-model="long" label="嗒（长）" />
-        <ui-text-field class="option-input" v-model="short" label="滴（短）" />
-        <ui-text-field class="option-input" v-model="space" label="分隔" />
-        <div class="btns">
-            <ui-raised-button class="btn" label="编码" primary title="文字转摩斯码" @click="encode" />
-            <ui-raised-button class="btn" label="解码" secondary title="摩斯码转文字" @click="decode" />
-        </div>
-        <div class="result" v-if="result">
-            {{ result }}
-        </div>
-        <div class="btns" v-if="result">
-            <ui-raised-button class="btn btn-copy" label="复制结果" />
-            <ui-raised-button class="btn" label="播放声音" @click="playAudio" v-if="isEncode" />
+        <div class="common-container container">
+            <ui-text-field  v-model="text" hintText="请输入文字或摩斯码" multiLine :rows="4" :rowsMax="4" />
+            <br>
+            <ui-text-field class="option-input" v-model="long" label="嗒（长）" />
+            <ui-text-field class="option-input" v-model="short" label="滴（短）" />
+            <ui-text-field class="option-input" v-model="space" label="分隔" />
+            <div class="btns">
+                <ui-raised-button class="btn" label="编码" primary title="文字转摩斯码" @click="encode" />
+                <ui-raised-button class="btn" label="解码" secondary title="摩斯码转文字" @click="decode" />
+            </div>
+            <div class="result" v-if="result">
+                {{ result }}
+            </div>
+            <div class="btns" v-if="result">
+                <ui-raised-button class="btn btn-copy" label="复制结果" />
+                <ui-raised-button class="btn" label="播放声音" @click="playAudio" v-if="isEncode" />
+            </div>
         </div>
     </my-page>
 </template>
